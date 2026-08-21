@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>MPI Kelas 1 | Pola Gerak Dasar Nonlokomotor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +28,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
       font-family: 'Nunito', sans-serif;
@@ -35,6 +36,7 @@
       color: var(--text);
       min-height: 100vh;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     body::before {
@@ -51,60 +53,75 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(124,156,255,0.1);
-      padding: 0.9rem 1.5rem;
+      padding: 0.75rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+      gap: 0.5rem;
     }
 
     .nav-logo {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.3rem;
+      font-size: clamp(1.05rem, 3.5vw, 1.3rem);
       font-weight: 700;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      margin-left: 1.4rem;
-      font-size: 0.9rem;
+      padding: 0.4rem 0.7rem;
+      font-size: clamp(0.78rem, 2.5vw, 0.9rem);
       font-weight: 600;
-      transition: color 0.3s;
+      transition: color 0.3s, background 0.3s;
+      border-radius: 8px;
+      -webkit-tap-highlight-color: transparent;
     }
-    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover, .nav-links a:active { color: var(--primary); background: var(--primary-soft); }
 
     .container {
       max-width: 1050px;
       margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
+      padding: 1.5rem 1rem 3.5rem;
     }
 
     .page-header {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
     .page-header h1 {
       font-family: 'Quicksand', sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-size: clamp(1.4rem, 5vw, 2.2rem);
       color: var(--text);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
       font-weight: 700;
+      line-height: 1.3;
     }
-    .page-header p { color: var(--muted); font-size: 1rem; }
+    .page-header p { color: var(--muted); font-size: clamp(0.88rem, 2.5vw, 1rem); }
 
     .task-card {
       background: linear-gradient(145deg, var(--peach-soft), #fff);
       border: 1px solid rgba(255,184,140,0.4);
       border-radius: var(--radius);
-      padding: 2rem;
-      margin-bottom: 3rem;
+      padding: 1.5rem 1.25rem;
+      margin-bottom: 2.5rem;
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
@@ -121,45 +138,47 @@
       background: linear-gradient(135deg, var(--peach), #ff9a6c);
       color: white;
       font-weight: 700;
-      font-size: 0.8rem;
-      padding: 0.35rem 1rem;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.9rem;
       border-radius: 50px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
     .task-card h2 {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.35rem;
+      font-size: clamp(1.1rem, 3.5vw, 1.35rem);
       color: var(--text);
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
       font-weight: 700;
+      line-height: 1.35;
     }
     .task-card p {
       color: #4a5568;
-      font-size: 1.02rem;
-      line-height: 1.75;
+      font-size: clamp(0.92rem, 2.8vw, 1.02rem);
+      line-height: 1.7;
     }
 
-    .section { margin-bottom: 3.5rem; }
+    .section { margin-bottom: 2.75rem; }
     .section-title {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.55rem;
+      font-size: clamp(1.25rem, 4vw, 1.55rem);
       color: var(--text);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
       display: flex;
       align-items: center;
-      gap: 0.7rem;
+      gap: 0.55rem;
       font-weight: 700;
+      flex-wrap: wrap;
     }
     .section-desc {
       color: var(--muted);
-      margin-bottom: 1.8rem;
-      font-size: 0.98rem;
+      margin-bottom: 1.5rem;
+      font-size: clamp(0.9rem, 2.6vw, 0.98rem);
     }
 
     .material-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
     }
 
     .material-card {
@@ -171,81 +190,87 @@
       border: 1px solid rgba(124,156,255,0.08);
     }
     .material-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(124,156,255,0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(124,156,255,0.15);
     }
 
     .material-img {
-      height: 160px;
+      height: 140px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3.8rem;
+      font-size: 3.4rem;
     }
     .material-card:nth-child(1) .material-img { background: var(--primary-soft); }
     .material-card:nth-child(2) .material-img { background: var(--accent-soft); }
     .material-card:nth-child(3) .material-img { background: var(--mint-soft); }
 
-    .material-body { padding: 1.4rem 1.5rem 1.6rem; }
+    .material-body { padding: 1.2rem 1.25rem 1.4rem; }
     .material-body h3 {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--text);
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.5rem;
       font-weight: 700;
     }
     .material-body p {
       color: var(--muted);
-      font-size: 0.93rem;
-      margin-bottom: 1.1rem;
-      line-height: 1.65;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
     }
 
     .video-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       background: var(--primary-soft);
       border: none;
       color: var(--primary);
-      padding: 0.55rem 1.15rem;
+      padding: 0.55rem 1.1rem;
       border-radius: 50px;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.3s;
       font-family: inherit;
+      min-height: 42px;
+      -webkit-tap-highlight-color: transparent;
     }
-    .video-btn:hover {
+    .video-btn:hover, .video-btn:active {
       background: var(--primary);
       color: white;
     }
 
-    /* Video Modal */
+    /* ===== Video Modal ===== */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(45,55,72,0.65);
+      background: rgba(45,55,72,0.7);
       z-index: 1000;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
     .modal-overlay.active { display: flex; }
 
     .modal-box {
       background: white;
-      border-radius: 20px;
+      border-radius: 18px;
       width: 100%;
       max-width: 800px;
+      max-height: 95vh;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.28);
       animation: modalIn 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
     @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      from { opacity: 0; transform: scale(0.95) translateY(12px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
@@ -253,36 +278,42 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.3rem;
+      padding: 0.9rem 1.1rem;
       border-bottom: 1px solid #edf2f7;
+      gap: 0.75rem;
+      flex-shrink: 0;
     }
     .modal-header h3 {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.1rem;
+      font-size: clamp(0.95rem, 3vw, 1.1rem);
       font-weight: 700;
       color: var(--text);
+      line-height: 1.3;
     }
     .modal-close {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
       border-radius: 50%;
       border: none;
       background: #f7fafc;
       color: var(--muted);
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
     }
-    .modal-close:hover { background: #edf2f7; color: var(--text); }
+    .modal-close:hover, .modal-close:active { background: #edf2f7; color: var(--text); }
 
     .modal-body {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       background: #000;
+      flex-shrink: 0;
     }
     .modal-body iframe {
       position: absolute;
@@ -292,15 +323,49 @@
       border: none;
     }
 
+    .modal-footer {
+      padding: 0.9rem 1.1rem;
+      border-top: 1px solid #edf2f7;
+      display: flex;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #fafbfc;
+    }
+
+    .btn-kembali {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      background: linear-gradient(135deg, var(--primary), #6b8cff);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      min-height: 46px;
+      min-width: 140px;
+      transition: all 0.3s;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 14px rgba(124,156,255,0.3);
+    }
+    .btn-kembali:hover, .btn-kembali:active {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(124,156,255,0.4);
+    }
+
     /* Games */
     .game-tabs {
       display: flex;
-      gap: 0.8rem;
-      margin-bottom: 1.8rem;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
     .game-tab {
-      padding: 0.65rem 1.4rem;
+      padding: 0.6rem 1.15rem;
       border-radius: 50px;
       background: white;
       border: 1.5px solid #e2e8f0;
@@ -308,8 +373,10 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
-      font-size: 0.92rem;
+      font-size: clamp(0.82rem, 2.5vw, 0.92rem);
       font-family: inherit;
+      min-height: 42px;
+      -webkit-tap-highlight-color: transparent;
     }
     .game-tab.active {
       background: linear-gradient(135deg, var(--primary), #6b8cff);
@@ -321,7 +388,7 @@
       display: none;
       background: var(--card);
       border-radius: var(--radius);
-      padding: 1.8rem;
+      padding: 1.4rem 1.15rem;
       box-shadow: var(--shadow);
       border: 1px solid rgba(124,156,255,0.08);
     }
@@ -331,41 +398,43 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 0.6rem;
     }
-    .quiz-progress { color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+    .quiz-progress { color: var(--muted); font-size: 0.88rem; font-weight: 600; }
     .quiz-score {
       background: var(--primary-soft);
       color: var(--primary);
-      padding: 0.35rem 1rem;
+      padding: 0.3rem 0.9rem;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     .question-box h3 {
-      font-size: 1.1rem;
-      margin-bottom: 1.2rem;
+      font-size: clamp(1rem, 3vw, 1.1rem);
+      margin-bottom: 1.1rem;
       color: var(--text);
       line-height: 1.5;
       font-weight: 600;
     }
 
-    .options { display: grid; gap: 0.7rem; }
+    .options { display: grid; gap: 0.6rem; }
 
     .option {
       background: #f7fafc;
       border: 1.5px solid #e2e8f0;
-      padding: 0.95rem 1.1rem;
+      padding: 0.9rem 1rem;
       border-radius: 14px;
       cursor: pointer;
       transition: all 0.25s;
-      font-size: 0.96rem;
+      font-size: clamp(0.9rem, 2.6vw, 0.96rem);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.7rem;
+      min-height: 48px;
+      -webkit-tap-highlight-color: transparent;
     }
     .option:hover:not(.disabled) {
       border-color: var(--primary);
@@ -379,6 +448,7 @@
     .option-letter {
       width: 28px;
       height: 28px;
+      min-width: 28px;
       border-radius: 50%;
       background: white;
       border: 1.5px solid #e2e8f0;
@@ -386,33 +456,35 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--primary);
-      flex-shrink: 0;
     }
 
     .quiz-nav {
       display: flex;
       justify-content: space-between;
-      margin-top: 1.4rem;
-      gap: 1rem;
+      margin-top: 1.3rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
 
     .btn {
-      padding: 0.7rem 1.5rem;
+      padding: 0.7rem 1.35rem;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 0.93rem;
+      font-size: 0.9rem;
       cursor: pointer;
       border: none;
       transition: all 0.3s;
       font-family: inherit;
+      min-height: 46px;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), #6b8cff);
       color: white;
     }
-    .btn-primary:hover { box-shadow: 0 6px 20px rgba(124,156,255,0.35); }
+    .btn-primary:hover { box-shadow: 0 6px 18px rgba(124,156,255,0.35); }
     .btn-secondary {
       background: #f7fafc;
       color: var(--muted);
@@ -420,36 +492,38 @@
     }
     .btn-secondary:hover { background: #edf2f7; color: var(--text); }
 
-    .result-box { text-align: center; padding: 1.5rem 0.5rem; }
+    .result-box { text-align: center; padding: 1.25rem 0.5rem; }
     .result-box h2 {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.6rem;
+      font-size: clamp(1.35rem, 4vw, 1.6rem);
       color: var(--text);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
       font-weight: 700;
     }
     .result-score {
-      font-size: 2.8rem;
+      font-size: clamp(2.2rem, 8vw, 2.8rem);
       font-weight: 800;
       color: var(--primary);
-      margin: 0.8rem 0;
+      margin: 0.7rem 0;
     }
-    .result-msg { color: var(--muted); margin-bottom: 1.4rem; }
+    .result-msg { color: var(--muted); margin-bottom: 1.25rem; font-size: 0.95rem; }
 
     .tf-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 0.75rem;
     }
     .tf-btn {
-      padding: 1.15rem;
+      padding: 1.05rem 0.75rem;
       border-radius: 14px;
-      font-size: 1.05rem;
+      font-size: clamp(0.95rem, 3vw, 1.05rem);
       font-weight: 700;
       cursor: pointer;
       border: 2px solid transparent;
       transition: all 0.3s;
       font-family: inherit;
+      min-height: 52px;
+      -webkit-tap-highlight-color: transparent;
     }
     .tf-true {
       background: #f0fff4;
@@ -466,15 +540,46 @@
 
     footer {
       text-align: center;
-      padding: 2rem;
+      padding: 1.75rem 1rem;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
     footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
 
-    @media (max-width: 600px) {
+    /* ===== Mobile breakpoints ===== */
+    @media (max-width: 640px) {
+      nav { padding: 0.65rem 0.85rem; }
+      .container { padding: 1.25rem 0.85rem 3rem; }
+      .task-card { padding: 1.25rem 1rem; border-radius: 16px; }
+      .material-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .material-img { height: 120px; font-size: 3rem; }
+      .game-tabs { gap: 0.5rem; }
+      .game-tab { flex: 1 1 auto; text-align: center; padding: 0.55rem 0.8rem; }
+      .game-panel { padding: 1.15rem 0.9rem; border-radius: 16px; }
       .tf-options { grid-template-columns: 1fr; }
       .quiz-nav { flex-direction: column; }
+      .quiz-nav .btn { width: 100%; }
+      .modal-overlay { padding: 0.6rem; align-items: flex-end; }
+      .modal-box {
+        border-radius: 18px 18px 12px 12px;
+        max-height: 92vh;
+      }
+      .modal-body { padding-bottom: 56.25%; }
+      .modal-footer { padding: 0.85rem 1rem; }
+      .btn-kembali { width: 100%; max-width: 280px; }
+    }
+
+    @media (max-width: 400px) {
+      .nav-links a { padding: 0.35rem 0.5rem; font-size: 0.75rem; }
+      .option { padding: 0.8rem 0.85rem; }
+    }
+
+    /* Landscape mobile video */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .modal-overlay { align-items: center; padding: 0.5rem; }
+      .modal-box { max-height: 98vh; }
+      .modal-body { padding-bottom: 0; height: 55vh; }
+      .modal-header, .modal-footer { padding: 0.5rem 0.85rem; }
     }
   </style>
 </head>
@@ -494,7 +599,6 @@
       <p>Media Pembelajaran Interaktif • Kelas 1 SD • Kurikulum Merdeka</p>
     </div>
 
-    <!-- Kartu Tugas -->
     <div class="task-card" id="tugas">
       <div class="task-badge">📌 TUGAS WAJIB</div>
       <h2>Tugas Sumatif Akhir Materi Lokomotor</h2>
@@ -506,7 +610,6 @@
       </p>
     </div>
 
-    <!-- Materi Nonlokomotor saja -->
     <section class="section" id="materi">
       <h2 class="section-title"><span>🧘</span> Pola Gerak Dasar Nonlokomotor</h2>
       <p class="section-desc">
@@ -553,7 +656,6 @@
       </div>
     </section>
 
-    <!-- Games -->
     <section class="section" id="game">
       <h2 class="section-title"><span>🎮</span> Game Edukatif</h2>
       <p class="section-desc">
@@ -593,13 +695,16 @@
 
   <!-- Video Modal -->
   <div class="modal-overlay" id="videoModal" onclick="closeVideoOnOverlay(event)">
-    <div class="modal-box">
+    <div class="modal-box" onclick="event.stopPropagation()">
       <div class="modal-header">
         <h3 id="videoTitle">Video Animasi</h3>
-        <button class="modal-close" onclick="closeVideo()">×</button>
+        <button class="modal-close" onclick="closeVideo()" aria-label="Tutup">×</button>
       </div>
       <div class="modal-body">
         <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-kembali" onclick="closeVideo()">← Kembali</button>
       </div>
     </div>
   </div>
@@ -609,7 +714,6 @@
   </footer>
 
   <script>
-    // Video Modal
     function openVideo(id, title) {
       document.getElementById('videoTitle').textContent = title;
       document.getElementById('videoFrame').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
@@ -625,7 +729,6 @@
       if (e.target === document.getElementById('videoModal')) closeVideo();
     }
 
-    // Quiz data (Nonlokomotor focused)
     const quiz1 = [
       { q: "Gerak yang dilakukan di tempat tanpa berpindah disebut...", options: ["Gerak Lokomotor", "Gerak Nonlokomotor", "Gerak Manipulatif", "Gerak Dinamis"], answer: 1 },
       { q: "Contoh gerak nonlokomotor adalah...", options: ["Berlari", "Melompat", "Membungkuk", "Berjalan"], answer: 2 },
@@ -714,7 +817,7 @@
       </div>`;
       if (answered !== null) {
         const correct = answered === item.answer;
-        html += `<p style="margin-top:1.2rem;color:${correct ? 'var(--success)' : 'var(--danger)'};font-weight:700">${correct ? '✓ Jawaban benar!' : '✗ Jawaban salah. Jawaban yang benar: ' + (item.answer ? 'BENAR' : 'SALAH')}</p>`;
+        html += `<p style="margin-top:1.1rem;color:${correct ? 'var(--success)' : 'var(--danger)'};font-weight:700">${correct ? '✓ Jawaban benar!' : '✗ Jawaban salah. Jawaban yang benar: ' + (item.answer ? 'BENAR' : 'SALAH')}</p>`;
       }
       html += `</div>`;
       document.getElementById('q2-content').innerHTML = html;
