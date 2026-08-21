@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MPI PJOK | Gerbang Masuk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #7c9cff;
+      --primary-soft: #e8efff;
+      --accent: #ff9ec5;
+      --accent-soft: #ffe8f0;
+      --mint: #7dd3c0;
+      --mint-soft: #e6f9f4;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #2d3748;
+      --muted: #718096;
+      --shadow: 0 10px 40px rgba(124, 156, 255, 0.12);
+      --radius: 24px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 15% 20%, rgba(124,156,255,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 75%, rgba(255,158,197,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(125,211,192,0.1) 0%, transparent 60%);
+      z-index: -1;
+    }
+
+    header {
+      padding: 2.5rem 1.5rem 1rem;
+      text-align: center;
+    }
+
+    .logo {
+      font-family: 'Quicksand', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    .welcome-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(124,156,255,0.12);
+    }
+
+    .welcome-card h1 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .welcome-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 0.45rem 1.3rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .class-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      box-shadow: var(--shadow);
+      border: 1px solid transparent;
+    }
+
+    .class-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(124,156,255,0.2);
+      border-color: rgba(124,156,255,0.25);
+    }
+
+    .class-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      transition: all 0.35s;
+    }
+
+    .class-card:nth-child(1) .class-icon { background: var(--primary-soft); }
+    .class-card:nth-child(2) .class-icon { background: var(--accent-soft); }
+
+    .class-card:hover .class-icon { transform: scale(1.1); }
+
+    .class-card h2 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .class-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-enter {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .class-card:nth-child(1) .btn-enter {
+      background: linear-gradient(135deg, var(--primary), #6b8cff);
+      color: white;
+    }
+    .class-card:nth-child(2) .btn-enter {
+      background: linear-gradient(135deg, var(--accent), #ff8ab8);
+      color: white;
+    }
+
+    .class-card:hover .btn-enter {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(124,156,255,0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer span { color: var(--primary); font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .welcome-card { padding: 2rem 1.4rem; }
+      .class-card { padding: 2rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">MPI PJOK</div>
+    <div class="subtitle">Media Pembelajaran Interaktif</div>
+  </header>
+
+  <main>
+    <div class="welcome-card">
+      <h1>Selamat Datang di Ruang Belajar</h1>
+      <p>
+        Platform pembelajaran interaktif mata pelajaran <strong>Pendidikan Jasmani, Olahraga dan Kesehatan (PJOK)</strong> 
+        untuk Kelas 1 dan Kelas 3 Sekolah Dasar. Dirancang untuk memberikan pengalaman belajar yang menyenangkan dan interaktif.
+      </p>
+      <div class="badge">✦ Kurikulum Merdeka ✦</div>
+    </div>
+
+    <h2 class="section-title">Pilih Kelas Anda</h2>
+
+    <div class="class-grid">
+      <a href="kelas1.html" class="class-card">
+        <div class="class-icon">🏃</div>
+        <h2>Kelas 1</h2>
+        <p>
+          Pola Gerak Dasar Nonlokomotor<br>
+          Materi, Video Animasi &amp; Game Edukatif
+        </p>
+        <span class="btn-enter">Masuk MPI Kelas 1 →</span>
+      </a>
+
+      <a href="kelas3.html" class="class-card">
+        <div class="class-icon">🤸</div>
+        <h2>Kelas 3</h2>
+        <p>
+          Aktivitas Gerak Dasar Nonlokomotor<br>
+          Materi, Video Animasi &amp; Game Edukatif
+        </p>
+        <span class="btn-enter">Masuk MPI Kelas 3 →</span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    Media Pembelajaran Interaktif PJOK • <span>Soft Edition</span> • 2026
+  </footer>
+</body>
+</html>
